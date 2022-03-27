@@ -1,0 +1,22 @@
+.container{
+    width: 800px;
+    height: 25vh;
+}
+
+.header{
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.saldos th{
+    border-style: hidden;
+    width: 50%;
+}
+
+.saldos{
+    display: flex;
+    align-items: center;
+    margin-top: 1.2rem;
+    border: 1px solid gray;
+}
