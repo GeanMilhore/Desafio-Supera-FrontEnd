@@ -26,14 +26,14 @@ const Pesquisa = () => {
         "Tipo",
         "Nome operador Transação"
     ]
-    
-    const idConta = window.localStorage.getItem('token') 
+
+    const idConta = window.localStorage.getItem('token')
     const dataInicio = UseForm();
     const dataFim = UseForm();
     const nomeOperador = UseForm();
 
     async function getTransferencias() {
-        const { url, options } = 
+        const { url, options } =
             GET_TRANSFERENCIAS(idConta, dataInicio.value, dataFim.value, nomeOperador.value);
 
         setUrl(url)
@@ -76,39 +76,40 @@ const Pesquisa = () => {
 
     return (
         <div className={style.container}>
-            <div className={style.header}>
-                <Input label={"Data Inicio"} type={"date"} {...dataInicio} />
-                <Input label={"Data Fim"} type={"date"} {...dataFim} />
-                <Input label={"Nome"} placeholder={"Nome do Operador"} type={"text"} {...nomeOperador} />
-                <Button onClick={() => getDadosTransferencias()}>Pesquisar</Button>
+            <div className={style.containerTable}>
+                <div className={style.header}>
+                    <Input label={"Data Inicio"} type={"date"} {...dataInicio} />
+                    <Input label={"Data Fim"} type={"date"} {...dataFim} />
+                    <Input label={"Nome"} placeholder={"Nome do Operador"} type={"text"} {...nomeOperador} />
+                    <Button onClick={() => getDadosTransferencias()}>Pesquisar</Button>
+                </div>
+
+                {
+                    (dadosTransferencias && saldo)
+                        ?
+                        <>
+                            <table style={{ 'borderStyle': 'none' }}>
+                                <thead>
+                                    <tr className={style.saldos}>
+                                        <th>Saldo Total: R$ {saldo.saldoTotal.toFixed(2).replace(".", ",")}</th>
+                                        <th>saldo Periodo: R$ {saldo.saldoPeriodo.toFixed(2).replace(".", ",")}</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <Table headers={cabecalhos} data={dadosTransferencias.content} />
+                            <Numerador
+                                first={dadosTransferencias.first}
+                                last={dadosTransferencias.last}
+                                number={dadosTransferencias.number}
+                                totalPages={dadosTransferencias.totalPages}
+                                currentUrl={url}
+                                setDados={setDadosTransferencias}
+                            />
+                        </>
+                        : null
+                }
             </div>
-
-            {
-                (dadosTransferencias && saldo)
-                    ?
-                    <>
-                        <table style={{'borderStyle':'none'}}>
-                            <thead>
-                                <tr className={style.saldos}>
-                                    <th>Saldo Total: R$ {saldo.saldoTotal.toFixed(2).replace(".", ",")}</th>
-                                    <th>saldo Periodo: R$ {saldo.saldoPeriodo.toFixed(2).replace(".", ",")}</th>
-                                </tr>
-                            </thead>
-                        </table>
-                        <Table headers={cabecalhos} data={dadosTransferencias.content} />
-                        <Numerador
-                            first={dadosTransferencias.first}
-                            last={dadosTransferencias.last}
-                            number={dadosTransferencias.number}
-                            totalPages={dadosTransferencias.totalPages}
-                            currentUrl={url}
-                            setDados={setDadosTransferencias}
-                        />
-                    </>
-                    : null
-            }
-
-            <div>
+            <div className={style.btnSair}>
                 <Button onClick={() => {
                     window.localStorage.removeItem('token')
                     navigate("/")

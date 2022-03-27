@@ -2,4 +2,19 @@
     display: flex;
     justify-content: space-around;
     margin-bottom: 1.5rem;
+    border: 1px solid rgb(236, 236, 236);
+    align-items: center;
+    padding: .5em;
+}
+
+.numerador span{
+    display: flex;
+    align-items: center;
+    background-color: lightblue;
+    padding: 1rem 2rem;
+    border-radius: 2em;
+}
+
+.containerNumerador span{
+    margin-top: 2em;
 }

@@ -11,3 +11,7 @@ table{
     margin: 1rem 0;
     margin-bottom: 3rem;
 }
+
+table th{
+    background-color: rgb(208, 238, 255);
+}

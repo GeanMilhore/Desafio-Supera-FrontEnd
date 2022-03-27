@@ -31,7 +31,7 @@ const Login = () => {
         setWarning(false)
 
         let body = {
-            nome_responsavel: usuario.value,
+            nome_responsavel: usuario.value.trim(),
             id_conta: numeroBanco.value
         }
 

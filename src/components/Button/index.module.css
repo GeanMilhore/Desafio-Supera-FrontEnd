@@ -1,0 +1,12 @@
+.button{
+    border-radius: 1rem;
+    border: none;
+    padding: 1em 3em;
+    cursor: pointer;
+    color: purple;
+}
+
+.button:disabled{
+    cursor: default;
+    background-color: rgb(207, 207, 207);
+}

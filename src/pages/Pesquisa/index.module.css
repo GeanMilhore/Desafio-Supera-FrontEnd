@@ -1,12 +1,19 @@
 .container{
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+}
+
+.containerTable{
     width: 800px;
-    height: 25vh;
+    border: 1px solid rgb(240, 240, 240);
+    padding: 5rem;
+    box-shadow: 1px 1px 50px  rgb(223, 223, 223);
 }
 
 .header{
-    margin: auto;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .saldos th{
@@ -19,4 +26,8 @@
     align-items: center;
     margin-top: 1.2rem;
     border: 1px solid gray;
+}
+
+.btnSair{
+    margin: 3rem;
 }
