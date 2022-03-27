@@ -11,6 +11,8 @@ import { GET_SALDOS, GET_TRANSFERENCIAS } from '../../services/api'
 
 const Pesquisa = () => {
 
+    document.title = "Desafio Supera - Transacoes"
+
     const navigate = useNavigate();
     const { dados, loading, error, request } = useFetch();
     const [dadosTransferencias, setDadosTransferencias] = React.useState();
